@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=1;" />
+        <title>HTML Preview(markdown to html) - Editor.md examples</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/editormd.preview.css" />
+        <style>            
+            .editormd-html-preview {
+                width: 100%;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="layout">
+            <div id="test-editormd-view2">
+                <textarea id="append-test" style="display:none;">%@</textarea>          
+            </div>
+        </div>
+        <!-- <script src="js/zepto.min.js"></script>
+		<script>		
+			var jQuery = Zepto;
+		</script> -->
+        <script src="js/jquery.min.js"></script>
+        <script src="lib/marked.min.js"></script>
+        <script src="lib/prettify.min.js"></script>
+        
+        <script src="lib/raphael.min.js"></script>
+        <script src="lib/underscore.min.js"></script>
+        <script src="lib/sequence-diagram.min.js"></script>
+        <script src="lib/flowchart.min.js"></script>
+        <script src="lib/jquery.flowchart.min.js"></script>
+
+        <script src="editormd.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                var testEditormdView2;
+                
+                testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
+                    htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                    emoji           : false,
+                    taskList        : true,
+                    tex             : true,
+                    flowChart       : true,
+                    sequenceDiagram : true,
+                });
+                var timer = window.setInterval(function(){
+                    if(editormd.kaTeXLoaded){
+                        window.setTimeout(function(){
+                            window.webkit.messageHandlers.uiwebviewhandler.postMessage({type:'onlocation',location:'RenderView/FinishLoading'});//Tell MarginNote that rendering has ended
+                        },200);
+                        window.clearInterval(timer);
+                    }
+                },100);
+            });
+        </script>
+    </body>
+</html>

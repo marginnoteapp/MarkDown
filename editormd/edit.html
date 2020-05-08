@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>MarkDown Edit</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/editormd.css" />
+    </head>
+    <body>
+        <div id="layout">
+            <header>
+            </header>
+            <div id="test-editormd">
+                <textarea style="display:none;"></textarea>
+            </div>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="editormd.min.js"></script>
+        <script type="text/javascript">
+			var testEditor;
+
+            $(function() {
+                testEditor = editormd("test-editormd", {
+                    width   : "90%",
+                    height  : 640,
+                    syncScrolling : "single",
+                    path    : "lib/",
+                    saveHTMLToTextarea: true,
+                    flowChart: true,
+                    sequenceDiagram: true,
+                    tex: true,
+                    emoji           : false,
+                    taskList        : true,
+                    toolbarIcons         : "mini",
+                });
+                
+                /*
+                // or
+                testEditor = editormd({
+                    id      : "test-editormd",
+                    width   : "90%",
+                    height  : 640,
+                    path    : "lib/"
+                });
+                */
+            });
+        </script>
+    </body>
+</html>
